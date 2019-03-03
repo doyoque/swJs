@@ -11,13 +11,14 @@
 </html>
 An image will appear here in 3 seconds:
 <script>
-  navigator.serviceWorker.register('sw.js')
-    .then(reg => console.log('SW registered!', reg))
-    .catch(err => console.log('Boo!', err));
-
-  setTimeout(() => {
-    const img = new Image();
-    img.src = 'assets/img/slowpoke.jpeg';
-    document.body.appendChild(img);
-  }, 3000);
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js').then(function(registration) {
+        //registration was successful
+        console.log('serviceWorker registration was successful with scope: ', registration.scope);
+      }, function(err) {
+        console.log('serviceWorker registration failed: ', err);
+      });
+    });
+  }
 </script>
