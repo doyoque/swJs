@@ -16,6 +16,10 @@ self.addEventListener('install', event => {
   
     // serve the myanee.png from the cache if the request is
 		// same-origin and the path is '/assets/img/slowpoke.jpeg'
+    console.log(url.origin);
+    console.log(location.origin);
+    console.log(url);
+    console.log(url.pathname);
 		if (url.origin == location.origin && url.pathname == '/assets/img/slowpoke.jpeg') {
       event.respondWith(caches.match('assets/img/myanee.png'));
     }
