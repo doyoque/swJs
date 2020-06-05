@@ -10,6 +10,7 @@
   </head>
 </html>
 An image will appear here in 3 seconds:
+<div id="image"></div>
 <script>
   navigator.serviceWorker.register('sw.js')
     .then(reg => console.log('SW registered!', reg))
@@ -17,7 +18,8 @@ An image will appear here in 3 seconds:
 
   setTimeout(() => {
     const img = new Image();
+		img.style.cssText = "width: 100%"
     img.src = 'assets/img/slowpoke.jpeg';
-    document.body.appendChild(img);
+    document.getElementById("image").appendChild(img);
   }, 3000);
 </script>
